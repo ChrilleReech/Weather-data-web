@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(deepskyblue, dodgerblue, blue);
+    font-family: sans-serif;
+    color: navajowhite;
+}
+.plats,
+.tempratur {
+    height: 30vh;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.tempratur {
+    flex-direction: column;
+}
+.tempratur-sektion {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.tempratur-sektion span {
+    margin: 10px;
+    font-size: 30px;
+}
+.tempratur-sektion h2 {
+    font-size: 40px;
+
+}
