@@ -6,25 +6,27 @@ window.addEventListener('load', ()=> {
     let platsTidszon = document.querySelector('.plats-tidszon');
     let tempraturSektion = document.querySelector('.tempratur');
     const tempraturSpan = document.querySelector('.tempratur span');
-    const token = config.MY_API_TOKEN;
-
-
+    
+    //const token = process.env.API_KEY;
+    //ffs
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position =>{
           long = position.coords.longitude;
           lat = position.coords.latitude;
          
+          
 
           //const proxy = 'https://cors-anywhere.herokuapp.com/';
-          const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${token}`;
+          const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=fa2a1784752c0b4e8594c75297543cae`;
+          //const virus = "https://dontclickiamavirus.herokuapp.com/weather"
 
           fetch(api)
-            .then(response => {
-                return response.json();
+          .then(response => {
+              return response.json();
             })
             .then(data => {               
                 const {temp} = data.main;
-                const {description, icon, main} = data.weather[0];
+                const {description, main} = data.weather[0];
                 let tempratur = temp - 273.15;
                 //Set DOM Elements from the API
                 tempraturGrader.textContent = Math.round(tempratur);
@@ -38,7 +40,7 @@ window.addEventListener('load', ()=> {
                 //Set icon
                 
 
-                //Byt tempratur till Celsius/Celvin
+                //Byt tempratur till Celsius/Kelvin/Faharenheit
                  tempraturSektion.addEventListener('click', () =>{
                      if(tempraturSpan.textContent === "°C"){
                          tempraturSpan.textContent = "°F";
@@ -97,9 +99,8 @@ window.addEventListener('load', ()=> {
      });
 
 
-    }
-    if(!navigator.geolocation){
-        document.querySelector('.plats-tidszon') = "Kunde inte hitta plats! Kontrollera plats behörigheter.";
+    }else {
+        platsTidszon.textContent = "Kunde inte hitta plats! Kontrollera platsbehörigheter.";
         //h1.textContent = "Kunde inte hitta plats! Kontrollera plats behörigheter.";
     };
 }); 
