@@ -8,7 +8,7 @@ window.addEventListener('load', ()=> {
     const tempraturSpan = document.querySelector('.tempratur span');
     
     //const token = process.env.API_KEY;
-    //ffs
+
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position =>{
           long = position.coords.longitude;
